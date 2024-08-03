@@ -1,18 +1,31 @@
 <?php get_header(); ?>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<?php
 
-			while ( have_posts() ) : the_post();
-				the_post();
+	<div class="container">
 
-				echo '<h1 class="mb-5">' . get_the_title() . '</h1>';
+		<div class="row">
 
-				the_content();
-			endwhile;
-			?>
-		</main>
-		<?php get_sidebar( 'content-bottom' ); ?>
+			<div class="col-12">
+
+				<?php
+				if ( have_posts() ) {
+					while ( have_posts() ) {
+
+						the_post();
+
+						echo '<h1 class="mb-5">' . get_the_title() . '</h1>';
+
+						the_content();
+
+
+					}
+				} else {
+					echo 'content none';
+				}
+				?>
+
+			</div>
+
+		</div>
+
 	</div>
-
 <?php get_footer(); ?>
