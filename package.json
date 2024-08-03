@@ -1,0 +1,53 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "author": "Veks <oleg@isvek.ru>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "slider-css-build": "npm-run-all --parallel slider-css-compile slider-css-minify",
+    "slider-css-compile": "sass --style expanded --source-map --embed-sources template-parts/blocks/slider/slider.scss:template-parts/blocks/slider/slider.css",
+    "slider-css-minify": "sass --style compressed --source-map --embed-sources template-parts/blocks/slider/slider.css:template-parts/blocks/slider/slider.min.css",
+    "slider-css-watch": "nodemon --watch template-parts/blocks/slider/ --ext scss --exec \"npm run slider-css-build\"",
+    "slider-js-build": "npm-run-all --parallel slider-js-compile slider-js-minify",
+    "slider-js-compile": "rollup --config template-parts/blocks/slider/rollup.slider.js --bundleConfigAsCjs",
+    "slider-js-minify": "terser --compress passes=2 --source-map --output template-parts/blocks/slider/slider.umd.min.js template-parts/blocks/slider/slider.umd.js",
+    "slider-js-watch": "nodemon --watch template-parts/blocks/slider/ --ext js --exec \"npm run slider-js-compile\"",
+    "accordion-css-build": "npm-run-all --parallel accordion-css-compile accordion-css-minify",
+    "accordion-css-compile": "sass --style expanded --source-map --embed-sources template-parts/blocks/accordion/accordion.scss:template-parts/blocks/accordion/accordion.css",
+    "accordion-css-minify": "sass --style compressed --source-map --embed-sources template-parts/blocks/accordion/accordion.css:template-parts/blocks/accordion/accordion.min.css",
+    "accordion-css-watch": "nodemon --watch template-parts/blocks/accordion/ --ext scss --exec \"npm run accordion-css-build\"",
+    "accordion-js-build": "npm-run-all --parallel accordion-js-compile accordion-js-minify",
+    "accordion-js-compile": "rollup --config template-parts/blocks/accordion/rollup.accordion.js --bundleConfigAsCjs",
+    "accordion-js-minify": "terser --compress passes=2 --source-map --output template-parts/blocks/accordion/accordion.umd.min.js template-parts/blocks/accordion/accordion.umd.js",
+    "accordion-js-watch": "nodemon --watch template-parts/blocks/accordion/ --ext js --exec \"npm run accordion-js-compile\"",
+    "calculator-js-build": "npm-run-all --parallel calculator-js-compile calculator-js-minify",
+    "calculator-js-compile": "rollup --config template-parts/blocks/calculator/rollup.calculator.js --bundleConfigAsCjs",
+    "calculator-js-minify": "terser --compress passes=2 --source-map --output template-parts/blocks/calculator/calculator.umd.min.js template-parts/blocks/calculator/calculator.umd.js",
+    "calculator-js-watch": "nodemon --watch template-parts/blocks/calculator/ --ext js --exec \"npm run calculator-js-compile\""
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-transform-runtime": "^7.24.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.24.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
+    "bootstrap": "^5.3.3",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.1.4",
+    "npm-check-updates": "^16.14.20",
+    "npm-run-all": "^4.1.5",
+    "postcss-preset-env": "^9.5.15",
+    "rollup": "^4.18.0",
+    "sass": "~1.77.6",
+    "terser": "^5.31.1"
+  },
+  "dependencies": {
+    "core-js": "^3.37.1",
+    "regenerator-runtime": "^0.14.1"
+  }
+}
